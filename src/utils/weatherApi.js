@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
-const BASE_URL = process.env.REACT_APP_WEATHER_API_BASE_URL || 'https://api.weatherapi.com/v1';
+const API_KEY = process.env.WEATHER_API_KEY;
+const BASE_URL = process.env.WEATHER_API_BASE_URL || 'https://api.weatherapi.com/v1';
 
 /**
  * Fetch weather forecast data for a given location
