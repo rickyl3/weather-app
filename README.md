@@ -57,10 +57,10 @@ cp terraform.tfvars.example terraform.tfvars
 
 **Edit '/infra/terraform.tfvars`**:
 ```hcl
-# Required
+# Required to change
 bucket_name             = "put-unique-bucket-name-here"
 
-# Optional
+# Optional to change
 aws_region              = "us-east-1"
 environment             = "production"
 cloudfront_price_class  = "PriceClass_100"
