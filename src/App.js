@@ -31,7 +31,7 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <h1 className="App-title">Weather App</h1>
-                <p className="App-subtitle">Get current and tomorrow's weather forecast</p>
+                <p className="App-subtitle">Get current and tomorrow's weather forecast!</p>
             </header>
 
             <div className="App-controls">
