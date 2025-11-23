@@ -1,6 +1,6 @@
 # Weather App
 
-A simple, responsive weather application that shows the current conditions and the conditions for tomorrow based on the user's location. The app supports the ability to switch between temperature units(celsius and fahrenheit), location search based on the user's input or location, and optional code to host the application in a cloud environment. The IaC utilizes Terraform, and AWS(S3 + CloudFront)
+A simple, responsive weather application that shows the current conditions and the conditions for tomorrow based on the user's location. The app supports the ability to switch between temperature units(celsius and fahrenheit), location search based on the user's input or location, favorite multiple locations they can choose to get the weather, and optional code to host the application in a cloud environment. The IaC utilizes Terraform, and AWS(S3 + CloudFront)
 
 The application is currently being deployed [at this link](https://d1l5yntgq8m69p.cloudfront.net) from my AWS account through the use of Terraform for demonstration purposes if you are unable to run it locally
 
