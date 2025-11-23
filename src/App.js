@@ -12,7 +12,7 @@ function App() {
         loading,
         error,
         fetchWeather,
-        fetchWeatherByGeolocation
+        fetchWeatherForCurrentLocation
     } = useWeather();
     
     const handleSearch = (location) => {
@@ -20,7 +20,7 @@ function App() {
     }
 
     const handleUseLocation = () => {
-        fetchWeatherByGeolocation();
+        fetchWeatherForCurrentLocation();
     }
 
     const handleUnitToggle = (unit) => {
