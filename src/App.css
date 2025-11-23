@@ -27,8 +27,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
     margin-bottom: 40px;
+}
+
+.App-controls-row {
+    display: flex;
+    align-items: stretch;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px;
 }
 
 .App-location {
@@ -173,6 +183,10 @@
         font-size: 16px;
     }
 
+    .App-controls-row {
+        gap: 10px;
+    }
+
     .App-weather-grid {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -199,6 +213,12 @@
 
     .App-subtitle {
         font-size: 14px;
+    }
+
+    .App-controls-row {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
     }
 
     .detail-item {

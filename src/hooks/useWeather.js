@@ -14,7 +14,7 @@ export const useWeather = (initialLocation = 'New York') => {
     const [location, setLocation] = useState(initialLocation);
 
     /**
-     * Fetch weather dat afor a given location
+     * Fetch weather data for a given location
      */
     const fetchWeather = useCallback(async (locationQuery) => {
         setLoading(true);

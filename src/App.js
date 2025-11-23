@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import LocationInput from './components/LocationInput/LocationInput';
 import WeatherCard from './components/WeatherCard/WeatherCard';
 import TemperatureToggle from './components/TemperatureToggle/TemperatureToggle';
 import { useWeather } from './hooks/useWeather';
+import FavoriteButton from './components/FavoriteButton/FavoriteButton';
+import FavoritesList from './components/FavoritesList/FavoritesList';
+import { getFavorites, addFavorite, removeFavorite, isFavorite } from './utils/favoriteLocations';
 
 function App() {
     const [temperatureUnit, setTemperatureUnit] = useState('C');
+    const [favorites, setFavorites] = useState([]);
+
     const {
         weatherData,
         loading,
@@ -14,6 +19,10 @@ function App() {
         fetchWeather,
         fetchWeatherForCurrentLocation
     } = useWeather();
+
+    useEffect(() => {
+        setFavorites(getFavorites());
+    }, []);
     
     const handleSearch = (location) => {
         fetchWeather(location);
@@ -26,6 +35,36 @@ function App() {
     const handleUnitToggle = (unit) => {
         setTemperatureUnit(unit);
     }
+
+    const handleToggleFavorite = () => {
+        if (!weatherData?.location) {
+            return;
+        }
+
+        const locationName = weatherData.location.name;
+        const isCurrentlyFavorited = isFavorite(locationName);
+
+        if (isCurrentlyFavorited) {
+            removeFavorite(locationName);
+        } else {
+            addFavorite(weatherData.location);
+        }
+
+        setFavorites(getFavorites());
+    };
+
+    const handleSelectFavorite = (locationName) => {
+        fetchWeather(locationName);
+    };
+
+    const handleRemoveFavorite = (locationName) => {
+        removeFavorite(locationName);
+        setFavorites(getFavorites());
+    };
+
+    const currentLocationIsFavorited = weatherData?.location 
+        ? isFavorite(weatherData.location.name) 
+        : false;
 
     return (
         <div className="App">
@@ -40,13 +79,32 @@ function App() {
                     onUseCurrentLocation={handleUseLocation}
                     loading={loading}
                 />
-                {weatherData && (
-                    <TemperatureToggle
-                        unit={temperatureUnit}
-                        onToggle={handleUnitToggle}
-                    />
-                )}
+                <div className="App-controls-row">
+                    {weatherData && (
+                        <>
+                            <TemperatureToggle
+                                unit={temperatureUnit}
+                                onToggle={handleUnitToggle}
+                            />
+                            <FavoriteButton
+                                location={weatherData.location}
+                                isFavorited={currentLocationIsFavorited}
+                                onToggle={handleToggleFavorite}
+                                disabled={loading}
+                            />
+                        </>
+                    )}
+                </div>
             </div>
+
+            {favorites.length > 0 && (
+                <FavoritesList
+                    favorites={favorites}
+                    onSelect={handleSelectFavorite}
+                    onRemove={handleRemoveFavorite}
+                    currentLocation={weatherData?.location?.name}
+                />
+            )}
 
             {loading && (
                 <div className="App-loading">

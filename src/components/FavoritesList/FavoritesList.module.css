@@ -1,0 +1,181 @@
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 30px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.title svg {
+    color: #ff6b6b;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 12px;
+    padding: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.item.active {
+    background: rgba(255, 255, 255, 0.98);
+    border: 2px solid #667eea;
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+}
+
+.selectButton {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    border-radius: 10px;
+    transition: background 0.2s ease;
+}
+
+.selectButton:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.locationInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.locationName {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.locationDetails {
+    font-size: 13px;
+    color: #666;
+}
+
+.activeBadge {
+    padding: 4px 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(102, 126, 234, 0.3);
+}
+
+.removeButton {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #999;
+    transition: all 0.2s ease;
+}
+
+.removeButton:hover {
+    background: rgba(255, 107, 107, 0.1);
+    color: #ff6b6b;
+}
+
+.emptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+    color: white;
+}
+
+.emptyState svg {
+    margin-bottom: 16px;
+    opacity: 0.5;
+}
+
+.emptyText {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.emptyHint {
+    font-size: 14px;
+    margin: 0;
+    opacity: 0.8;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin-bottom: 20px;
+    }
+
+    .title {
+        font-size: 16px;
+    }
+
+    .locationName {
+        font-size: 15px;
+    }
+
+    .locationDetails {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .item {
+        padding: 2px;
+    }
+
+    .selectButton {
+        padding: 10px 12px;
+    }
+
+    .activeBadge {
+        font-size: 11px;
+        padding: 3px 8px;
+    }
+
+    .removeButton {
+        width: 32px;
+        height: 32px;
+    }
+}
