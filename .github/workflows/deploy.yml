@@ -55,9 +55,3 @@ jobs:
       - name: Invalidate CloudFront cache
         run: |
           aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
-
-      - name: Deployment summary
-        run: |
-          echo "Deployment completed successfully!"
-          echo "S3 Bucket: ${{ secrets.S3_BUCKET_NAME }}"
-          echo "CloudFront Distribution: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}"
