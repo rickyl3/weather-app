@@ -1,70 +1,110 @@
-# Getting Started with Create React App
+# Weather App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple, responsive weather application that shows the current conditions and the conditions for tomorrow based on the user's location. The app supports the ability to switch between temperature units(celsius and fahrenheit), location search based on the user's input or location, and optional code to host the application in a cloud environment. The IaC utilizes Terraform, and AWS(S3 + CloudFront)
 
-## Available Scripts
+The application is currently being deployed [at this link](https://d1l5yntgq8m69p.cloudfront.net) from my AWS account through the use of Terraform for demonstration purposes if you are unable to run it locally
 
-In the project directory, you can run:
+## Getting Started
 
-### `npm start`
+### 1. Clone the Repository
+```bash
+git clone https://github.com/rickyl3/weather-app.git
+cd weather-app
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 2. Install dependencies
+```bash
+npm install
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 3. Configure environment variables
+1. Sign up for a free weather API key at [WeatherAPI.com](https://www.weatherapi.com/)
+2. Copy the example environment file:
+```bash
+cp .env.example .env
+```
 
-### `npm test`
+3. Input the free weather API key into `.env`
+```env
+REACT_APP_WEATHER_API_KEY=your_actual_api_key_here
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 4. Run Locally
+```bash
+npm start
+```
 
-### `npm run build`
+This will create the weather application at [http://localhost:3000](http://localhost:3000)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Optional Terraform Deployment
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Prerequisites
+1. [Have Terraform installed](https://developer.hashicorp.com/terraform/install)
 
-### `npm run eject`
+2. Configure AWS credentials
+```bash
+aws configure
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 1. Create Terraform Variables File
+Terraform requires a unique S3 bucket name so:
+```bash
+cd infra
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+cp terraform.tfvars.example terraform.tfvars
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**Edit '/infra/terraform.tfvars`**:
+```hcl
+# Required
+bucket_name             = "put-unique-bucket-name-here"
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Optional
+aws_region              = "us-east-1"
+environment             = "production"
+cloudfront_price_class  = "PriceClass_100"
+```
 
-## Learn More
+### 2. Initialize Terraform
+```bash
+cd infra
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+terraform init
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 3. Preview Changes
+```bash
+terraform plan
+```
 
-### Code Splitting
+### 4. Create Infrastructure
+```bash
+terraform apply
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 5. Build and Deploy Application
+```bash
+cd .. 
 
-### Analyzing the Bundle Size
+npm run build
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+aws s3 sync ./build s3://put-unique-bucket-name-here --delete
 
-### Making a Progressive Web App
+aws cloudfront create-invalidation \
+  --distribution-id your-distribution-id-here \
+  --paths "/*"
+```
+Remember to replace `put-unique-bucket-name-here` and `your-distribution-id-here` accordingly
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 6. Access The Application
+```bash
+cd infra
 
-### Advanced Configuration
+terraform output cloudfront_url
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Paste the url given from the output into your browser
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Author
+Created by Ricky Leung
