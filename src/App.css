@@ -1,38 +1,215 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    text-align: center;
+    margin-bottom: 40px;
+    color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.App-title {
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App-subtitle {
+    font-size: 18px;
+    opacity: 0.9;
+    font-weight: 400;
+    }
+
+.App-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.App-location {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.location-icon {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2.5;
+}
+
+.App-location h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.App-weather-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.App-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.detail-item {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.detail-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.detail-label {
+    display: block;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detail-value {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+}
+
+.App-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    color: white;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.App-loading p {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.App-error {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    color: #d32f2f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.error-icon {
+    width: 48px;
+    height: 48px;
+    stroke-width: 2;
+}
+
+.App-error p {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+    max-width: 500px;
+}
+
+.App-footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: white;
+    opacity: 0.8;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .App {
+        padding: 15px;
+    }
+
+    .App-title {
+        font-size: 36px;
+    }
+
+    .App-subtitle {
+        font-size: 16px;
+    }
+
+    .App-weather-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .App-details {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 15px;
+    }
+
+    .detail-value {
+        font-size: 20px;
+    }
+
+    .App-location h2 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .App-title {
+        font-size: 28px;
+    }
+
+    .App-subtitle {
+        font-size: 14px;
+    }
+
+    .detail-item {
+        padding: 15px;
+    }
+
+    .detail-label {
+        font-size: 12px;
+    }
+
+    .detail-value {
+        font-size: 18px;
+    }
 }

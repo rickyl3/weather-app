@@ -1,0 +1,212 @@
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+}
+
+.date {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.iconContainer {
+    margin-bottom: 15px;
+    }
+
+.weatherIcon {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.temperatureSection {
+    margin-bottom: 15px;
+}
+
+.mainTemp {
+    font-size: 56px;
+    font-weight: 700;
+    color: #667eea;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.feelsLike {
+    font-size: 14px;
+    color: #666;
+}
+
+.tempRange {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.maxTemp,
+.minTemp {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.tempLabel {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #999;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.tempValue {
+    font-size: 36px;
+    font-weight: 700;
+    color: #667eea;
+}
+
+.separator {
+    font-size: 32px;
+    color: #ddd;
+    font-weight: 300;
+}
+
+.condition {
+    font-size: 18px;
+    color: #555;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.additionalInfo {
+    display: flex;
+    gap: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #f0f0f0;
+    width: 100%;
+    justify-content: center;
+    }
+
+.infoItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.infoItem svg {
+    color: #667eea;
+}
+
+/* Variations for different card types */
+.card.current {
+    border-left: 5px solid #667eea;
+}
+
+.card.today {
+    border-left: 5px solid #48bb78;
+}
+
+.card.tomorrow {
+    border-left: 5px solid #ed8936;
+}
+
+@media (max-width: 768px) {
+    .card {
+        padding: 20px;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    .date {
+        font-size: 12px;
+    }
+
+    .weatherIcon {
+        width: 80px;
+        height: 80px;
+    }
+
+    .mainTemp {
+        font-size: 48px;
+    }
+
+    .tempValue {
+        font-size: 28px;
+    }
+
+    .condition {
+        font-size: 16px;
+    }
+
+    .additionalInfo {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .infoItem {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 15px;
+    }
+
+    .title {
+        font-size: 16px;
+    }
+
+    .weatherIcon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .mainTemp {
+        font-size: 42px;
+    }
+
+    .tempValue {
+        font-size: 24px;
+    }
+
+    .tempRange {
+        gap: 15px;
+    }
+}
