@@ -35,11 +35,11 @@ function App() {
             </header>
 
             <div className="App-controls">
-                {/* <LocationInput
+                <LocationInput
                     onSearch={handleSearch}
                     onUseCurrentLocation={handleUseLocation}
                     loading={loading}
-                /> */}
+                />
                 {weatherData && (
                     <TemperatureToggle
                         unit={temperatureUnit}
@@ -75,7 +75,6 @@ function App() {
                         </svg>
                         <h2>
                             {weatherData.location.name}
-                            {weatherData.location.region && `, ${weatherData.location.region}`}
                             {weatherData.location.country && `, ${weatherData.location.country}`}
                         </h2>
                     </div>
