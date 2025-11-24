@@ -32,7 +32,7 @@ Aside from code to host the application in a cloud environment(IaC), the favorit
 I chose localStorage because it offers instant read/write with no API latency, works offline, and requires zero backend setup. For single-device usage, it's perfect. The 2 main issues are that favorites can't be synced across devices and the size limits(*In Chrome, localStorage has a 5 MB limit so I limited the max favorite amount to 10 for now*). If this were a production app with user accounts, I would migrate to a backend database to fix these issues.
 
 ### How I Implemented the Terraform IaC
-I didn't have prior experience with Terraform prior to this assignment but I wanted to challenge myself a little bit since I had extra time and I felt that IaC would be something I would have to learn in my career eventually anyway. Luckily for me, it wasn't too bad.
+I didn't have prior experience with Terraform prior to this assignment but I wanted to challenge myself a little bit since I had extra time and I felt that IaC would be something I would have to learn in my career eventually anyway. Luckily for me, it wasn't too bad. This was later implemented into the CI/CD pipeline for automatic deployment.
 
 **S3 Bucket**: AWS S3 can be used to host static websites so I made sure to utilize that to host my weather app in case there are issues with running it locally.
 
