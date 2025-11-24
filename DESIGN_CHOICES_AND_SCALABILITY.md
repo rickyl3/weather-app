@@ -29,7 +29,7 @@ Aside from code to host the application in a cloud environment(IaC), the favorit
 **Architecture Choice**: I used **localStorage for persistence** instead of setting up a backend. Since MVP didn't require a backend infrastructure, I felt that creating one strictly for this feature would be overkill. However, as explained later, if we were to scale this application, it would be much better to create an actual backend infrastructure.
 
 **Why localStorage**:
-I chose localStorage because it offers instant read/write with no API latency, works offline, and requires zero backend setup. For single-device usage, it's perfect. The 2 main issues are that favorites can't synced across devices and the size limits(*In Chrome, localStorage has a 5 MB limit so I limited the max favorite amount to 10*). If this were a production app with user accounts, I would migrate to a backend database to fix these issues.
+I chose localStorage because it offers instant read/write with no API latency, works offline, and requires zero backend setup. For single-device usage, it's perfect. The 2 main issues are that favorites can't be synced across devices and the size limits(*In Chrome, localStorage has a 5 MB limit so I limited the max favorite amount to 10 for now*). If this were a production app with user accounts, I would migrate to a backend database to fix these issues.
 
 ### How I Implemented the Terraform IaC
 I didn't have prior experience with Terraform prior to this assignment but I wanted to challenge myself a little bit since I had extra time and I felt that IaC would be something I would have to learn in my career eventually anyway. Luckily for me, it wasn't too bad.
