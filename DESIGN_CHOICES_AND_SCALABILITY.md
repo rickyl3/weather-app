@@ -83,6 +83,12 @@ From my experience, the pipeline would be a lot more thorough and includes a lot
 - Build the application
 - Run E2E tests
 
+### Automated Testing
+Realistically, almost every piece of code that is written in a production should be tested and through unit/component and E2E tests. In addition to this, as mentioned above, these tests would be integrated into the CI/CD pipeline so that it runs every time we push a new feature. With these additions, it would make reaching a high code coverage percentage a lot easier. 
+
+**Why I didn't try to implement this optional deliverable:** Although I do have experience writing test cases and running them to try to maintain a good code coverage, I don't really have any experience with the initial setup that is required. Given the initial 2-day time constraint, I wanted to prioritize getting the MVP completed rather than risk spending a significant amount of time trying to learn how to setup Selenium or Playwrightt. However, if given much more time, it would have definitely been a feature that I worked on as the initial setup of the application, alongside the cloud infrastructure and CI/CD pipeline.
+
+
 ### Logs
 Utilize CloudWatch to have logs for the website. From this, we can see whenever there would be API errors and performance metrics of the weather app. 
 
