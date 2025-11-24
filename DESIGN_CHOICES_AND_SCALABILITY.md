@@ -1,7 +1,7 @@
 # Design Decisions and How I Would Scale My Solution
 
 ## 0. Initial Thought Process and Context
-From reading the requirements and deliverables, I decided to try and implement the MVP(only Technical Requirements) before working on any of further features. This was because I was aware of the time limit of the technical assignment and I wanted to give myself sufficient time for in the case where I ran into any serious problems. However, I knew that I still wanted to implement at least 2 of the optional deliverables(luckily, I was able to) so I tried my best to get through the MVP as fast as possible.
+From reading the requirements and deliverables, I decided to try and implement the MVP(only Technical Requirements) before working on any of further features. This was because I was aware of the time limit of the technical assignment and I wanted to give myself sufficient time for in the case where I ran into any serious problems. However, I knew that I still wanted to implement at least 2 of the optional deliverables(luckily, I was able to) so I focused to get through the MVP as fast as possible.
 
 ---
 
@@ -36,7 +36,7 @@ I didn't have prior experience with Terraform prior to this assignment but I wan
 
 **S3 Bucket**: AWS S3 can be used to host static websites so I made sure to utilize that to host my weather app in case there are issues with running it locally.
 
-**CloudFront**: I'm aware that this is commonly paired with S3 static website hosting so I decided to include it. Although this website won't receive much traffic, it typically acts as a CDN(Content Delivery Network) so it would make the app much faster.
+**CloudFront**: I'm aware that this is commonly paired with S3 static website hosting so I decided to include it. Although this website won't receive much traffic, it typically acts as a CDN(Content Delivery Network) so it would make the app much faster. (Caches content at edge locations, provides HTTPS for security, more cost-effective when scaled, etc.)
 
 ### Error Handling
 I tried my best to implement error messages for as many different scenarios as I can think of(i.e. network issues, invalid locations, API key problems). This made testing a lot easier and it tends to be good practice for improving the user experience by giving them actionable feedback.
@@ -86,7 +86,7 @@ From my experience, the pipeline would be a lot more thorough and includes a lot
 ### Automated Testing
 Realistically, almost every piece of code that is written in a production should be tested and through unit/component and E2E tests. In addition to this, as mentioned above, these tests would be integrated into the CI/CD pipeline so that it runs every time we push a new feature. With these additions, it would make reaching a high code coverage percentage a lot easier. 
 
-**Why I didn't try to implement this optional deliverable:** Although I do have experience writing test cases and running them to try to maintain a good code coverage, I don't really have any experience with the initial setup that is required. Given the initial 2-day time constraint, I wanted to prioritize getting the MVP completed rather than risk spending a significant amount of time trying to learn how to setup Selenium or Playwrightt. However, if given much more time, it would have definitely been a feature that I worked on as the initial setup of the application, alongside the cloud infrastructure and CI/CD pipeline.
+**Why I didn't try to implement this optional deliverable:** Although I do have experience writing test cases and running them to try to maintain a good code coverage, I don't really have much experience with the initial setup that is required. Given the initial 2-day time constraint, I wanted to prioritize getting the MVP completed rather than risk spending a significant amount of time trying to learn how to setup Selenium or Playwrightt. However, if given much more time, it would have definitely been a feature that I worked on as the initial setup of the application, alongside the cloud infrastructure and CI/CD pipeline.
 
 
 ### Logs
