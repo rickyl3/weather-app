@@ -185,7 +185,7 @@ function App() {
             )}
 
             <footer className="App-footer">
-                <p>Powered by WeatherAPI.com</p>
+                <p>Created by Ricky Leung</p>
             </footer>
         </div>
     );

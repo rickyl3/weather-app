@@ -4,6 +4,8 @@ A simple, responsive weather application that shows the current conditions and t
 
 The application is currently being deployed [at this link](https://d1l5yntgq8m69p.cloudfront.net) from my AWS account through the use of Terraform for demonstration purposes if you are unable to run it locally
 
+**For justification on my design choices, assumptions, and how I would scale my solution in a real-world production environment, please reference `DESIGN_CHOICES_AND_SCALABILITY.md`**
+
 ## Getting Started
 
 ### 1. Clone the Repository
