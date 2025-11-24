@@ -63,6 +63,17 @@
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
+.App-location-labels {
+    margin: 5px 0 0 0;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.App-location-labels em {
+    font-style: italic;
+}
+
 .App-weather-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
